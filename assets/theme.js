@@ -30,6 +30,26 @@
     update();
   }
 
+  // Galerie produit : 1 grande image + 4 miniatures sélectionnables (échange d'images)
+  var galMain = document.querySelector('[data-gal-main]');
+  if (galMain) {
+    var thumbs = document.querySelectorAll('.gal-thumb');
+    Array.prototype.forEach.call(thumbs, function (btn) {
+      btn.addEventListener('click', function () {
+        var img = btn.querySelector('img');
+        var prev = { large: galMain.getAttribute('src'), small: galMain.getAttribute('data-small'), alt: galMain.getAttribute('alt') };
+        galMain.setAttribute('src', btn.getAttribute('data-large'));
+        galMain.setAttribute('data-small', btn.getAttribute('data-small'));
+        galMain.setAttribute('alt', btn.getAttribute('data-alt'));
+        btn.setAttribute('data-large', prev.large);
+        btn.setAttribute('data-small', prev.small);
+        btn.setAttribute('data-alt', prev.alt);
+        img.setAttribute('src', prev.small);
+        img.setAttribute('alt', prev.alt);
+      });
+    });
+  }
+
   // Neige décorative (désactivée si « réduire les animations »)
   var canvas = document.getElementById('snow');
   if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

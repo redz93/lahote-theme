@@ -1,12 +1,25 @@
 {%- assign current = product.selected_or_first_available_variant -%}
 <section class="section product">
-  <div class="gallery">
-    {%- for image in product.images -%}
-      {%- assign img_alt = image.alt | default: product.title -%}
-      {{ image | image_url: width: 900 | image_tag: loading: 'lazy', alt: img_alt }}
+  <div class="gallery{% if product.images.size < 2 %} single{% endif %}">
+    {%- if product.images.size > 0 -%}
+      {%- assign first_image = product.images.first -%}
+      {%- assign first_alt = first_image.alt | default: product.title -%}
+      <div class="gal-main">
+        <img data-gal-main src="{{ first_image | image_url: width: 900 }}" data-small="{{ first_image | image_url: width: 200 }}" alt="{{ first_alt | escape }}" width="900" height="900" loading="eager">
+      </div>
+      {%- if product.images.size > 1 -%}
+        <div class="gal-thumbs">
+          {%- for image in product.images offset: 1 limit: 4 -%}
+            {%- assign thumb_alt = image.alt | default: product.title -%}
+            <button type="button" class="gal-thumb" data-large="{{ image | image_url: width: 900 }}" data-small="{{ image | image_url: width: 200 }}" data-alt="{{ thumb_alt | escape }}" aria-label="{{ thumb_alt | escape }}">
+              <img src="{{ image | image_url: width: 200 }}" alt="{{ thumb_alt | escape }}" width="200" height="200" loading="lazy">
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
     {%- else -%}
       <div class="ph big">{{ 'product-1' | placeholder_svg_tag }}</div>
-    {%- endfor -%}
+    {%- endif -%}
   </div>
 
   <div class="buy">
