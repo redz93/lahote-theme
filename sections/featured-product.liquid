@@ -1,0 +1,33 @@
+{%- assign spot = section.settings.product | default: collections.all.products.first -%}
+{%- if spot != blank -%}
+<section class="section spotlight">
+  <div class="spot-media">
+    {%- if spot.featured_image -%}
+      {%- assign spot_alt = spot.featured_image.alt | default: spot.title -%}
+      {{ spot.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: spot_alt }}
+    {%- else -%}
+      <div class="ph big">{{ 'product-1' | placeholder_svg_tag }}</div>
+    {%- endif -%}
+  </div>
+  <div class="spot-text">
+    {%- if section.settings.badge != blank -%}<p class="badge">{{ section.settings.badge }}</p>{%- endif -%}
+    <h2>{{ section.settings.heading | default: spot.title }}</h2>
+    {%- if section.settings.show_description -%}<p>{{ spot.description | strip_html | truncate: 220 }}</p>{%- endif -%}
+    <p class="price">{% if spot.price_varies %}{{ 'general.from' | t }} {% endif %}{{ spot.price | money }}</p>
+    <a class="btn" href="{{ spot.url }}">{{ section.settings.button_label }}</a>
+  </div>
+</section>
+{%- endif -%}
+{% schema %}
+{
+  "name": "Produit phare",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Produit (sinon le premier produit de la boutique)" },
+    { "type": "text", "id": "badge", "label": "Étiquette", "default": "Notre coup de cœur" },
+    { "type": "text", "id": "heading", "label": "Titre (sinon le nom du produit)" },
+    { "type": "checkbox", "id": "show_description", "label": "Afficher un extrait de la description", "default": true },
+    { "type": "text", "id": "button_label", "label": "Bouton", "default": "Personnaliser cette lampe" }
+  ],
+  "presets": [{ "name": "Produit phare" }]
+}
+{% endschema %}

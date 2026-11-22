@@ -58,3 +58,9 @@ details{border-bottom:1px solid var(--beige);padding:14px 0}summary{cursor:point
   .product{grid-template-columns:1fr}.line{grid-template-columns:60px 1fr auto}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* Produit phare */
+.spotlight{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:center}
+.spot-media img{width:100%;border-radius:8px;box-shadow:0 12px 40px rgba(73,55,47,.2)}
+.badge{display:inline-block;background:var(--berry);color:var(--cream);padding:4px 14px;border-radius:999px;font-size:.8rem;letter-spacing:.05em;margin:0 0 12px}
+@media(max-width:760px){.spotlight{grid-template-columns:1fr}}

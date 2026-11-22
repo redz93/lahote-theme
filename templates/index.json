@@ -133,10 +133,19 @@
         "b1",
         "b2"
       ]
+    },
+    "spotlight": {
+      "type": "featured-product",
+      "settings": {
+        "badge": "Notre coup de cœur",
+        "show_description": true,
+        "button_label": "Personnaliser cette lampe"
+      }
     }
   },
   "order": [
     "hero",
+    "spotlight",
     "featured",
     "how",
     "benefits",
