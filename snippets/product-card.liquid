@@ -1,0 +1,13 @@
+{%- comment -%} Paramètre : product {%- endcomment -%}
+<a class="card" href="{{ product.url }}">
+  <div class="ph">
+    {%- if product.featured_image -%}
+      {%- assign card_alt = product.featured_image.alt | default: product.title -%}
+      {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: card_alt }}
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag }}
+    {%- endif -%}
+  </div>
+  <h3>{{ product.title }}</h3>
+  <p>{% if product.price_varies %}{{ 'general.from' | t }} {% endif %}{{ product.price | money }}{% unless product.available %} · {{ 'general.sold_out' | t }}{% endunless %}</p>
+</a>

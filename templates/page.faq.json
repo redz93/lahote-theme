@@ -1,0 +1,41 @@
+{
+  "sections": {
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "b0": {
+          "type": "question",
+          "settings": {
+            "question": "Comment personnaliser ma lampe ?",
+            "answer": "Renseignez le prénom, le message et ajoutez votre photo sur la fiche produit."
+          }
+        },
+        "b1": {
+          "type": "question",
+          "settings": {
+            "question": "Quels sont les délais de livraison ?",
+            "answer": "[À compléter par LAHOTE]"
+          }
+        },
+        "b2": {
+          "type": "question",
+          "settings": {
+            "question": "Quelle est la politique de retour ?",
+            "answer": "[À compléter par LAHOTE]"
+          }
+        }
+      },
+      "block_order": [
+        "b0",
+        "b1",
+        "b2"
+      ],
+      "settings": {
+        "heading": "Questions fréquentes"
+      }
+    }
+  },
+  "order": [
+    "faq"
+  ]
+}

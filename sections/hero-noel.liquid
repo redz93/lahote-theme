@@ -1,0 +1,41 @@
+<section class="hero">
+  <div class="hero-side left">
+    {%- if section.settings.image_left != blank -%}
+      {{ section.settings.image_left | image_url: width: 600 | image_tag: class: 'hero-img', alt: section.settings.alt_left, loading: 'eager' }}
+    {%- else -%}
+      <img class="hero-img" src="{{ 'hero-couple.jpg' | asset_url }}" alt="{{ section.settings.alt_left | escape }}" width="450" height="450" loading="eager">
+    {%- endif -%}
+  </div>
+  <div class="hero-text">
+    {%- if section.settings.eyebrow != blank -%}<p class="noel">{{ section.settings.eyebrow }}</p>{%- endif -%}
+    <h1>{{ section.settings.heading }}</h1>
+    <p>{{ section.settings.text }}</p>
+    {%- if section.settings.button_label != blank -%}<a class="btn light" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>{%- endif -%}
+    {%- if section.settings.caption != blank -%}<small>{{ section.settings.caption }}</small>{%- endif -%}
+  </div>
+  <div class="hero-side right">
+    {%- if section.settings.image_right != blank -%}
+      {{ section.settings.image_right | image_url: width: 600 | image_tag: class: 'hero-img', alt: section.settings.alt_right, loading: 'eager' }}
+    {%- else -%}
+      <img class="hero-img" src="{{ 'hero-famille.jpg' | asset_url }}" alt="{{ section.settings.alt_right | escape }}" width="450" height="450" loading="eager">
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Bannière Noël",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "Le cadeau personnalisé de Noël" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Vos souvenirs méritent leur lumière." },
+    { "type": "textarea", "id": "text", "label": "Texte", "default": "Lampes LED personnalisées avec votre photo : pour un couple, une famille, un proche." },
+    { "type": "text", "id": "button_label", "label": "Bouton", "default": "Découvrir nos créations" },
+    { "type": "url", "id": "button_link", "label": "Lien du bouton", "default": "/collections/all" },
+    { "type": "text", "id": "caption", "label": "Mention sous le bouton", "default": "Visuels d'illustration" },
+    { "type": "image_picker", "id": "image_left", "label": "Image gauche (sinon image d'exemple du thème)" },
+    { "type": "text", "id": "alt_left", "label": "Texte alternatif gauche", "default": "Lampe LED personnalisée avec photo d'un couple" },
+    { "type": "image_picker", "id": "image_right", "label": "Image droite (sinon image d'exemple du thème)" },
+    { "type": "text", "id": "alt_right", "label": "Texte alternatif droite", "default": "Lampe LED personnalisée avec photo de famille" }
+  ],
+  "presets": [{ "name": "Bannière Noël" }]
+}
+{% endschema %}

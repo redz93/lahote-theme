@@ -1,0 +1,18 @@
+{%- paginate search.results by 12 -%}
+<section class="section">
+  <h1>{{ 'search.title' | t }}</h1>
+  {%- if search.performed -%}
+    <p>{{ 'search.results' | t: terms: search.terms }}</p>
+    <div class="grid">
+      {%- for item in search.results -%}
+        {%- if item.object_type == 'product' -%}{% render 'product-card', product: item %}
+        {%- else -%}<a class="card" href="{{ item.url }}"><h3>{{ item.title }}</h3></a>{%- endif -%}
+      {%- else -%}<p>{{ 'search.none' | t }}</p>{%- endfor -%}
+    </div>
+    {%- if paginate.pages > 1 -%}<div class="pagination">{{ paginate | default_pagination }}</div>{%- endif -%}
+  {%- endif -%}
+</section>
+{%- endpaginate -%}
+{% schema %}
+{ "name": "Recherche" }
+{% endschema %}

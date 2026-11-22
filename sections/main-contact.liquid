@@ -1,0 +1,15 @@
+<section class="section narrow">
+  <h1>{{ page.title }}</h1>
+  <div class="desc">{{ page.content }}</div>
+  {%- form 'contact' -%}
+    {%- if form.posted_successfully? -%}<p class="demo" role="status">{{ 'contact.success' | t }}</p>{%- endif -%}
+    {{ form.errors | default_errors }}
+    <label>{{ 'contact.name' | t }}<input type="text" name="contact[name]" required autocomplete="name"></label>
+    <label>{{ 'contact.email' | t }}<input type="email" name="contact[email]" required autocomplete="email"></label>
+    <label>{{ 'contact.message' | t }}<textarea name="contact[body]" rows="5" required></textarea></label>
+    <button class="btn" type="submit">{{ 'contact.send' | t }}</button>
+  {%- endform -%}
+</section>
+{% schema %}
+{ "name": "Contact" }
+{% endschema %}

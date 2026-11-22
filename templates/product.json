@@ -1,0 +1,75 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "b0": {
+          "type": "feature",
+          "settings": {
+            "text": "[Caractéristique à compléter]"
+          }
+        },
+        "b1": {
+          "type": "feature",
+          "settings": {
+            "text": "[Caractéristique à compléter]"
+          }
+        },
+        "b2": {
+          "type": "feature",
+          "settings": {
+            "text": "[Caractéristique à compléter]"
+          }
+        }
+      },
+      "block_order": [
+        "b0",
+        "b1",
+        "b2"
+      ]
+    },
+    "related": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Vous aimerez aussi",
+        "products_to_show": 3
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "b0": {
+          "type": "question",
+          "settings": {
+            "question": "Comment personnaliser ma lampe ?",
+            "answer": "Renseignez le prénom, le message et ajoutez votre photo sur la fiche produit."
+          }
+        },
+        "b1": {
+          "type": "question",
+          "settings": {
+            "question": "Quels sont les délais de livraison ?",
+            "answer": "[À compléter par LAHOTE]"
+          }
+        },
+        "b2": {
+          "type": "question",
+          "settings": {
+            "question": "Quelle est la politique de retour ?",
+            "answer": "[À compléter par LAHOTE]"
+          }
+        }
+      },
+      "block_order": [
+        "b0",
+        "b1",
+        "b2"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "related",
+    "faq"
+  ]
+}

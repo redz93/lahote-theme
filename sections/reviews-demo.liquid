@@ -1,0 +1,26 @@
+<section class="section alt-band">
+  <div class="wrap">
+    <h2>{{ section.settings.heading }}</h2>
+    <p class="demo">Contenu de démonstration : remplacez ces blocs par de vrais avis clients (ou installez une application d'avis).</p>
+    <div class="grid">
+      {%- for block in section.blocks -%}
+        <blockquote class="review" {{ block.shopify_attributes }}><p>{{ block.settings.text }}</p><footer>{{ block.settings.author }}</footer></blockquote>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Avis clients (démo)",
+  "max_blocks": 6,
+  "settings": [{ "type": "text", "id": "heading", "label": "Titre", "default": "Avis clients" }],
+  "blocks": [{
+    "type": "review", "name": "Avis",
+    "settings": [
+      { "type": "textarea", "id": "text", "label": "Texte", "default": "[Avis de démonstration à remplacer]" },
+      { "type": "text", "id": "author", "label": "Auteur", "default": "[Prénom]" }
+    ]
+  }],
+  "presets": [{ "name": "Avis clients (démo)" }]
+}
+{% endschema %}

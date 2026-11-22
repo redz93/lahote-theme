@@ -1,0 +1,146 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-noel"
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Nos créations",
+        "products_to_show": 3
+      }
+    },
+    "how": {
+      "type": "how-it-works",
+      "blocks": {
+        "b0": {
+          "type": "step",
+          "settings": {
+            "title": "Choisissez votre lampe",
+            "text": "Photo, couple ou famille."
+          }
+        },
+        "b1": {
+          "type": "step",
+          "settings": {
+            "title": "Personnalisez",
+            "text": "Prénom, message, modèle et photo."
+          }
+        },
+        "b2": {
+          "type": "step",
+          "settings": {
+            "title": "Recevez votre création",
+            "text": "[Détails de fabrication et de livraison à compléter]"
+          }
+        }
+      },
+      "block_order": [
+        "b0",
+        "b1",
+        "b2"
+      ]
+    },
+    "benefits": {
+      "type": "benefits",
+      "blocks": {
+        "b0": {
+          "type": "benefit",
+          "settings": {
+            "title": "Cadeau personnalisé",
+            "text": "Une idée cadeau unique pour Noël."
+          }
+        },
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Paiement sécurisé",
+            "text": "Le paiement est géré par Shopify."
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "title": "[Avantage à compléter]",
+            "text": "[Texte à compléter]"
+          }
+        }
+      },
+      "block_order": [
+        "b0",
+        "b1",
+        "b2"
+      ]
+    },
+    "reviews": {
+      "type": "reviews-demo",
+      "blocks": {
+        "b0": {
+          "type": "review",
+          "settings": {
+            "text": "[Avis de démonstration à remplacer]",
+            "author": "[Prénom]"
+          }
+        },
+        "b1": {
+          "type": "review",
+          "settings": {
+            "text": "[Avis de démonstration à remplacer]",
+            "author": "[Prénom]"
+          }
+        },
+        "b2": {
+          "type": "review",
+          "settings": {
+            "text": "[Avis de démonstration à remplacer]",
+            "author": "[Prénom]"
+          }
+        }
+      },
+      "block_order": [
+        "b0",
+        "b1",
+        "b2"
+      ]
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "b0": {
+          "type": "question",
+          "settings": {
+            "question": "Comment personnaliser ma lampe ?",
+            "answer": "Renseignez le prénom, le message et ajoutez votre photo sur la fiche produit."
+          }
+        },
+        "b1": {
+          "type": "question",
+          "settings": {
+            "question": "Quels sont les délais de livraison ?",
+            "answer": "[À compléter par LAHOTE]"
+          }
+        },
+        "b2": {
+          "type": "question",
+          "settings": {
+            "question": "Quelle est la politique de retour ?",
+            "answer": "[À compléter par LAHOTE]"
+          }
+        }
+      },
+      "block_order": [
+        "b0",
+        "b1",
+        "b2"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "featured",
+    "how",
+    "benefits",
+    "reviews",
+    "faq"
+  ]
+}

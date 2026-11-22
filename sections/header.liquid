@@ -1,0 +1,25 @@
+<header class="header">
+  <a class="logo" href="{{ routes.root_url }}">
+    {%- if section.settings.logo != blank -%}{{ section.settings.logo | image_url: width: 240 | image_tag: alt: shop.name, loading: 'eager' }}{%- else -%}{{ shop.name | upcase }}{%- endif -%}
+  </a>
+  <button class="burger" type="button" data-nav-toggle aria-expanded="false" aria-controls="nav" aria-label="{{ 'general.menu' | t }}">☰</button>
+  <nav id="nav" class="nav" data-nav aria-label="{{ 'general.menu' | t }}">
+    {%- for link in linklists[section.settings.menu].links -%}
+      <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+    {%- endfor -%}
+  </nav>
+  <form class="search" action="{{ routes.search_url }}" method="get" role="search">
+    <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search' | t }}" aria-label="{{ 'general.search' | t }}">
+    <input type="hidden" name="type" value="product">
+  </form>
+  <a class="cartlink" href="{{ routes.cart_url }}">{{ 'general.cart' | t }} ({{ cart.item_count }})</a>
+</header>
+{% schema %}
+{
+  "name": "En-tête",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo (optionnel, sinon le nom de la boutique)" },
+    { "type": "link_list", "id": "menu", "label": "Menu principal", "default": "main-menu" }
+  ]
+}
+{% endschema %}

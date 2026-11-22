@@ -1,0 +1,37 @@
+<section class="section">
+  <h1>{{ 'cart.title' | t }}</h1>
+  {%- if cart.item_count == 0 -%}
+    <p>{{ 'cart.empty' | t }}</p>
+    <a class="btn" href="{{ routes.all_products_collection_url }}">{{ 'cart.continue' | t }}</a>
+  {%- else -%}
+    <form action="{{ routes.cart_url }}" method="post" id="cart-form">
+      {%- for item in cart.items -%}
+        <article class="line">
+          <div class="thumb">{%- if item.image -%}{{ item.image | image_url: width: 160 | image_tag: loading: 'lazy', alt: item.product.title }}{%- endif -%}</div>
+          <div>
+            <a href="{{ item.url }}">{{ item.product.title }}</a>
+            {%- unless item.product.has_only_default_variant -%}<small>{{ item.variant.title }}</small>{%- endunless -%}
+            {%- for prop in item.properties -%}
+              {%- assign first_char = prop.first | slice: 0 -%}
+              {%- if prop.last != blank and first_char != '_' -%}
+                <small>{{ prop.first }} : {% if prop.last contains '/uploads/' %}<a href="{{ prop.last }}" target="_blank" rel="noopener">{{ 'cart.view_photo' | t }}</a>{% else %}{{ prop.last }}{% endif %}</small>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+          <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" aria-label="{{ 'cart.quantity' | t }}">
+          <strong>{{ item.final_line_price | money }}</strong>
+          <a class="link" href="{{ item.url_to_remove }}">{{ 'general.remove' | t }}</a>
+        </article>
+      {%- endfor -%}
+      <p class="total">{{ 'cart.subtotal' | t }} : <strong>{{ cart.total_price | money }}</strong></p>
+      <p class="info">{{ 'cart.taxes' | t }}</p>
+      <div class="actions">
+        <button class="btn ghost" type="submit" name="update">{{ 'cart.update' | t }}</button>
+        <button class="btn" type="submit" name="checkout">{{ 'cart.checkout' | t }}</button>
+      </div>
+    </form>
+  {%- endif -%}
+</section>
+{% schema %}
+{ "name": "Panier" }
+{% endschema %}

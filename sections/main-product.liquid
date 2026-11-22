@@ -1,0 +1,72 @@
+{%- assign current = product.selected_or_first_available_variant -%}
+<section class="section product">
+  <div class="gallery">
+    {%- for image in product.images -%}
+      {%- assign img_alt = image.alt | default: product.title -%}
+      {{ image | image_url: width: 900 | image_tag: loading: 'lazy', alt: img_alt }}
+    {%- else -%}
+      <div class="ph big">{{ 'product-1' | placeholder_svg_tag }}</div>
+    {%- endfor -%}
+  </div>
+
+  <div class="buy">
+    <h1>{{ product.title }}</h1>
+    <p class="price" data-price>{{ current.price | money }}</p>
+
+    <form method="post" action="{{ routes.cart_add_url }}" enctype="multipart/form-data" id="product-form">
+      {%- if product.has_only_default_variant -%}
+        <input type="hidden" name="id" value="{{ current.id }}">
+      {%- else -%}
+        <label>{{ 'product.model' | t }}
+          <select name="id" data-variant-select>
+            {%- for v in product.variants -%}
+              <option value="{{ v.id }}" data-price="{{ v.price | money | escape }}" data-available="{{ v.available }}"{% if v == current %} selected{% endif %}>{{ v.title }}</option>
+            {%- endfor -%}
+          </select>
+        </label>
+      {%- endif -%}
+
+      <label>{{ 'product.firstname' | t }}
+        <input type="text" name="properties[Prénom]" required maxlength="40" autocomplete="off">
+      </label>
+      <label>{{ 'product.message' | t }}
+        <textarea name="properties[Message]" rows="3" maxlength="150"></textarea>
+      </label>
+      {%- if section.settings.show_photo -%}
+        <label>{{ 'product.photo' | t }}
+          <input type="file" name="properties[Photo]" accept="image/*"{% if section.settings.require_photo %} required{% endif %}>
+        </label>
+      {%- endif -%}
+      <label>{{ 'product.quantity' | t }}
+        <input type="number" name="quantity" value="1" min="1" max="20">
+      </label>
+
+      <button class="btn" type="submit" data-add data-label="{{ 'product.add' | t }}" data-soldout="{{ 'product.sold_out' | t }}"{% unless current.available %} disabled{% endunless %}>
+        {%- if current.available -%}{{ 'product.add' | t }}{%- else -%}{{ 'product.sold_out' | t }}{%- endif -%}
+      </button>
+    </form>
+
+    {%- if settings.delivery_info != blank -%}<p class="info">{{ settings.delivery_info }}</p>{%- endif -%}
+    <div class="desc">{{ product.description }}</div>
+
+    {%- if section.blocks.size > 0 -%}
+      <h2 class="small">{{ 'product.features' | t }}</h2>
+      <ul class="features">
+        {%- for block in section.blocks -%}<li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>{%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Fiche produit",
+  "settings": [
+    { "type": "checkbox", "id": "show_photo", "label": "Afficher le champ photo", "default": true },
+    { "type": "checkbox", "id": "require_photo", "label": "Photo obligatoire", "default": true }
+  ],
+  "blocks": [{
+    "type": "feature", "name": "Caractéristique",
+    "settings": [{ "type": "text", "id": "text", "label": "Texte", "default": "[Caractéristique à compléter]" }]
+  }]
+}
+{% endschema %}

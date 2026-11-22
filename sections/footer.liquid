@@ -1,0 +1,20 @@
+<footer class="footer">
+  <div>
+    <strong class="logo">{{ shop.name | upcase }}</strong>
+    <p>{{ section.settings.tagline }}</p>
+  </div>
+  <div>
+    {%- for link in linklists[section.settings.menu].links -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
+    {%- for policy in shop.policies -%}{%- if policy.body != blank -%}<a href="{{ policy.url }}">{{ policy.title }}</a>{%- endif -%}{%- endfor -%}
+  </div>
+  <small>© {{ 'now' | date: '%Y' }} {{ shop.name }}</small>
+</footer>
+{% schema %}
+{
+  "name": "Pied de page",
+  "settings": [
+    { "type": "text", "id": "tagline", "label": "Slogan", "default": "Vos souvenirs méritent leur lumière." },
+    { "type": "link_list", "id": "menu", "label": "Menu du pied de page", "default": "footer" }
+  ]
+}
+{% endschema %}

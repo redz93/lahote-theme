@@ -1,0 +1,53 @@
+{
+  "general": {
+    "skip": "Aller au contenu",
+    "search": "Rechercher",
+    "menu": "Menu",
+    "cart": "Panier",
+    "sold_out": "Épuisé",
+    "from": "À partir de",
+    "remove": "Retirer",
+    "collections": "Collections"
+  },
+  "cart": {
+    "title": "Votre panier",
+    "empty": "Votre panier est vide.",
+    "continue": "Voir nos créations",
+    "update": "Mettre à jour",
+    "checkout": "Commander",
+    "subtotal": "Sous-total",
+    "taxes": "Taxes et frais de livraison calculés au moment du paiement.",
+    "quantity": "Quantité",
+    "view_photo": "Voir la photo"
+  },
+  "product": {
+    "add": "Ajouter au panier",
+    "sold_out": "Épuisé",
+    "firstname": "Prénom",
+    "message": "Message",
+    "photo": "Votre photo",
+    "model": "Modèle",
+    "quantity": "Quantité",
+    "features": "Caractéristiques"
+  },
+  "contact": {
+    "name": "Nom",
+    "email": "E-mail",
+    "message": "Message",
+    "send": "Envoyer",
+    "success": "Merci, votre message a bien été envoyé."
+  },
+  "search": {
+    "title": "Recherche",
+    "results": "Résultats pour « {{ terms }} »",
+    "none": "Aucun résultat."
+  },
+  "not_found": {
+    "title": "Page introuvable",
+    "back": "Retour à l'accueil"
+  },
+  "password": {
+    "label": "Mot de passe",
+    "enter": "Entrer"
+  }
+}

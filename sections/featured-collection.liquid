@@ -1,0 +1,24 @@
+{%- assign source = section.settings.collection | default: collections.all -%}
+<section class="section">
+  <h2>{{ section.settings.heading }}</h2>
+  <div class="grid">
+    {%- assign shown = 0 -%}
+    {%- for item in source.products -%}
+      {%- if item.id != product.id and shown < section.settings.products_to_show -%}
+        {%- assign shown = shown | plus: 1 -%}
+        {% render 'product-card', product: item %}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Produits vedettes",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Nos créations" },
+    { "type": "collection", "id": "collection", "label": "Collection (sinon tous les produits)" },
+    { "type": "range", "id": "products_to_show", "label": "Nombre de produits", "min": 2, "max": 12, "step": 1, "default": 3 }
+  ],
+  "presets": [{ "name": "Produits vedettes" }]
+}
+{% endschema %}
